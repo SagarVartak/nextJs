@@ -1,0 +1,82 @@
+
+.imageRow {
+    border: 2px solid red;
+    margin-bottom: 20vh;
+  }
+  
+  .imageColumn {
+    border: 2px solid magenta;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 4px 4px;
+    margin: 5px;
+    transition: 0.3s;
+    transition: ease-in-out;
+  }
+
+  .imageDiv{
+      border: 2px solid white;
+      flex: 25%;
+      flex-direction: column;
+      height: 30vh;
+      align-content: center;
+      text-align: center;
+  }
+  
+  .imageDiv img {
+    border: 2px solid blue;
+    margin-top: 8px;
+    vertical-align:middle;
+    max-width: 100%;
+    max-height: 100%;
+    padding: 4px 4px;
+  }
+  .imageColumn img:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+  }
+  
+  .imageColumn a:hover img {
+    border: 10px solid blueviolet;
+  } 
+  
+  /* Responsive layout - makes a two column-layout instead of four columns */
+   /* @media screen and (max-width: 800px) {
+    .imageColumn {
+      flex: 50%;
+      max-width: 50%;
+    }
+  } */
+  
+  /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+   @media screen and (max-width: 768px) {
+    .imageColumn {
+      flex: 100%;
+    }
+    .imageDiv{
+        flex: 50%;
+        height: 20vh;
+    }
+    .imageDiv img {
+        height: 100%;
+    }
+    
+    
+  } 
+
+  .topButton{
+    display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: red; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+  }
+  
