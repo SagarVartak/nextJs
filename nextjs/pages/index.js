@@ -19,7 +19,11 @@ export default function Home() {
 
     <div className={styles.texture}>
     </div>
-      
+      <div className={styles.btn}>
+        <a href="/images">
+        <button className={styles.button}>Click</button>
+        </a>
+      </div>
 
     
     </div>
