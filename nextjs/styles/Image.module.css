@@ -1,4 +1,69 @@
-.imgContain{
+.container{
     display: flex;
-    margin: 15vh;
+    margin: 2vh;
+    border: 2px solid blue;
+    height: 70vh;
+    align-self: center;
+    flex-wrap: wrap;
+}
+
+.imgContain{
+    border: 2px solid violet;
+    flex-direction: row;
+    height: 100%;
+    width: 70%;
+    align-items: center;
+    text-align: center;
+}
+.imgContain img {
+    align-items: center;
+    width: auto;
+    height: 500px;
+}
+
+.buttonSection{
+    border: 5px solid red;
+    text-align: center;
+    padding-top: 20%;
+}
+.buttonSection button{
+    padding: 20px;
+    font-size: 18px;
+    margin: 10px;
+    border-radius: 14px;
+}
+.buttonSection button:hover{
+    background-color: coral;
+    color: white;
+    transition: ease-in-out;
+}
+
+.buttonSection h3 {
+    color: white;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .imgContain{
+        flex-direction: column;
+        padding: 0px;
+    }
+    .buttonSection{
+        padding-top: 0px;
+        width: 50vh;
+    }
+    .imgContain{
+        height: 40vh;
+        width: 50vh;
+    }
+    .imgContain img{
+        height: 40vh;
+        width: 100%;
+    }
+    .container{
+        margin: 10px;
+    }
+
 }

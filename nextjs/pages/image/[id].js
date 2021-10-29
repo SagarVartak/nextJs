@@ -2,6 +2,8 @@ import React from 'react'
 import styles from '../../styles/Image.module.css'
 import { saveAs } from "file-saver";
 import { useRouter } from 'next/router';
+import Header from '../../components/Header';
+import Contact from '../../components/Contact';
 
 export default function image(props) {
     const url = props.data[0].rooms[0].images[0].url;
@@ -18,19 +20,25 @@ export default function image(props) {
 
       const router = useRouter();
     return (
-        <div>
+      <>
+      <Header />
+        <div className={styles.container}>
             <div className={styles.imgContain}>
-            <img src={url} width="80%" height="80%"></img>
+            <img src={url}></img>
+            </div>
             <div className={styles.buttonSection}>
                     {/* <a href={url} download> */}
+                    <h3>{fileName}</h3>
                     <button className={styles.btn} onClick={saveFile}>
                     Download
                     </button>
                     {/* </a> */}
                 <button className={styles.btn} onClick={() => router.back()}>Back</button>
             </div>
-            </div>
+            
         </div>
+        <Contact />
+        </>
     )
 }
 
