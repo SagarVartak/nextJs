@@ -1,28 +1,33 @@
 import React from 'react'
 import styles from '../../styles/Image.module.css'
 import { saveAs } from "file-saver";
+import { useRouter } from 'next/router';
 
 export default function image(props) {
-    const url = `https://media.graphcms.com/`+props.image[0];
+    const url = props.data[0].rooms[0].images[0].url;
+    console.log("these are props",props.data[0].rooms[0].images[0].fileName);
     console.log("currenturl",url);
+    const fileName = props.data[0].rooms[0].images[0].fileName;
 
     const saveFile = () => {
         saveAs(
           url,
-          "sample.jpeg"
+          fileName
         );
       };
+
+      const router = useRouter();
     return (
         <div>
             <div className={styles.imgContain}>
-            <img src={url} width="100%" height="100%"></img>
+            <img src={url} width="80%" height="80%"></img>
             <div className={styles.buttonSection}>
                     {/* <a href={url} download> */}
                     <button className={styles.btn} onClick={saveFile}>
                     Download
                     </button>
                     {/* </a> */}
-                <button className={styles.btn}>Back</button>
+                <button className={styles.btn} onClick={() => router.back()}>Back</button>
             </div>
             </div>
         </div>
@@ -30,13 +35,43 @@ export default function image(props) {
 }
 
 export const getStaticProps = async (context) => {
-    console.log("adadfa",context);
+    console.log("adadfa",context.params.data);
+
+    const imag = await fetch(
+      "https://api-ap-northeast-1.graphcms.com/v2/ckup3h1ly1g0d01z6f8hm7b1w/master",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          query: `{
+            rooms {
+              id
+              images(where : {handle : "${context.params.id}"}){
+                id
+                fileName
+                url
+                handle
+              }
+            }
+          }
+          `,
+        }),
+      }
+    )
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data)
+        return res.data;
+      });
+      
     return {
         props: {
           image: [context.params.id],
+          data: [imag],
         },
       };
 }
+
 
 export const getStaticPaths = async () => {
     const images = await fetch(
@@ -49,7 +84,7 @@ export const getStaticPaths = async () => {
         {
           rooms {
             id
-            images{
+            images(orderBy:fileName_ASC first:1000){
               id
               fileName
               url
@@ -62,7 +97,7 @@ export const getStaticPaths = async () => {
       )
         .then((res) => res.json())
         .then((res) => {
-        //   console.log(res.data)
+          console.log(res.data)
           return res.data;
         });
     console.log("jabdjadjv ajdj dj v", images.rooms[0]);

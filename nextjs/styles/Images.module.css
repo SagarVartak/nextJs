@@ -1,11 +1,11 @@
 
 .imageRow {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin-bottom: 20vh;
   }
   
   .imageColumn {
-    border: 2px solid magenta;
+    /* border: 2px solid magenta; */
     display: flex;
     flex-wrap: wrap;
     padding: 4px 4px;
@@ -15,18 +15,20 @@
   }
 
   .imageDiv{
-      border: 2px solid white;
+      /* border: 2px solid white; */
       flex: 25%;
-      flex-direction: column;
+      flex-direction: row;
       height: 30vh;
       align-content: center;
+      vertical-align: middle;
       text-align: center;
   }
   
   .imageDiv img {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     margin-top: 8px;
-    vertical-align:middle;
+    text-align: center;
+    align-items: center;
     max-width: 100%;
     max-height: 100%;
     padding: 4px 4px;

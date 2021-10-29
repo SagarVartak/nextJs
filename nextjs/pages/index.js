@@ -18,13 +18,13 @@ export default function Home() {
       <Header/>
 
     <div className={styles.texture}>
-    </div>
+    
       <div className={styles.btn}>
         <a href="/images">
-        <button className={styles.button}>Click</button>
+        <button className={styles.button}>IMAGES</button>
         </a>
       </div>
-
+      </div>
     
     </div>
     <Contact />

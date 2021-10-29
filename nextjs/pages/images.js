@@ -15,7 +15,7 @@ export default function images(images) {
         <div className={styles.imageRow}>
           <div className={styles.imageColumn}>
             {images.images.rooms[0].images.map((image) => (
-              <div className={styles.imageDiv}>
+              <div className={styles.imageDiv} key={image.id}>
                 <Link href={"/image/"+image.handle}>
                 <img
                   src={image.url}
@@ -49,7 +49,7 @@ export async function getStaticProps() {
     {
       rooms {
         id
-        images{
+        images(orderBy:fileName_ASC first:1000){
           id
           fileName
           url
